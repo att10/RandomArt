@@ -1,5 +1,7 @@
 from PIL import Image
 from PIL import ImageOps
+from PIL import ImageFilter
+
 import numpy as np
 import random
 
@@ -7,7 +9,7 @@ import random
 side_length = 56
 
 square = Image.open("square.png")
-top_left = Image.open("corner.png")
+top_left = Image.open("corner2.png")
 bot_left = top_left.rotate(90)
 bot_right = bot_left.rotate(90)
 top_right = bot_right.rotate(90)
@@ -33,6 +35,7 @@ def make_art(grid_size):
 def main():
     make_art(10)
     Image.fromarray(output_px).show()
+    #Image.fromarray(output_px).filter(ImageFilter.SMOOTH).show()
     
 
 if __name__ == "__main__":
