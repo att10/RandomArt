@@ -8,15 +8,16 @@ import random
 seed = 2048
 random.seed(seed)
 
-side_length = 56
+side_length = 100
+grid_dim = 10
 
-square = Image.open("src_img/square.png")
-top_left = Image.open("src_img/corner2.png")
+square = Image.open("src_img/square1.png")
+top_left = Image.open("src_img/corner3.png")
 bot_left = top_left.rotate(90)
 bot_right = bot_left.rotate(90)
 top_right = bot_right.rotate(90)
 
-output = Image.new("RGBA", (10*56, 10*56))
+output = Image.new("RGBA", (grid_dim*side_length, grid_dim*side_length))
 output_px = np.array(output)
 
 red = [237, 28, 36, 255]
@@ -69,7 +70,7 @@ def make_art(grid_size):
                         output_px[pi, pj] = color2
                         
 def main():
-    make_art(10)
+    make_art(grid_dim)
     im = Image.fromarray(output_px)
     im.save(str(seed) + ".png", "PNG")
     #Image.fromarray(output_px).filter(ImageFilter.SMOOTH).show()
